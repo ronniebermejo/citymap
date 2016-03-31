@@ -4,11 +4,13 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
   <meta http-equiv="Content-Security-Policy" content="default-src * blob:; script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos; *; style-src  &apos;self&apos; &apos;unsafe-inline&apos; *;">
   <title>citymap</title>
+
   <link href="http://code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
   <script src="http://code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
   <script src="lib/exif-js/exif.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+  <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
   <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/24/5/overlay.js"></script>
   <script src="lib/js-rich-marker-compiled.js"></script>
   <script src="http://example.gajotres.net/include/angular-google-maps/angular-google-maps.min.js"></script>
@@ -22,6 +24,10 @@
   <script src="js/instagram.factory.js"></script>
   <script src="js/main.controller.js"></script>
 
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+  </head>
 
 
 <body>

@@ -3,25 +3,35 @@
   <ion-content data-tap-disabled="true">
 
     <!--<ion-list>-->
-      <!--<ion-item>Event #1</ion-item>-->
-      <!--<ion-item>Event #2</ion-item>-->
-      <!--<ion-item>Place #3</ion-item>-->
-      <!--<ion-item>Phote #4</ion-item>-->
-      <!--<ion-item>Checkin #5</ion-item>-->
+    <!--<ion-item>Event #1</ion-item>-->
+    <!--<ion-item>Event #2</ion-item>-->
+    <!--<ion-item>Place #3</ion-item>-->
+    <!--<ion-item>Phote #4</ion-item>-->
+    <!--<ion-item>Checkin #5</ion-item>-->
     <!--</ion-list>-->
 
     <ion-list>
-      <ion-item  ng-repeat="image in vm.images" >
-        <h4>Instagram </h4>
-        <p><img ng-src="{{image.user.profile_picture}}" style="border-radius: 40px;width:20px;">{{image.user.full_name}} </p>
-        <img ng-src="{{image.images.low_resolution.url}}">
-        <br>
-        <small>{{image.caption.text}}</small>
+      <ion-item ng-repeat="new in vm.news">
+        <h4>Noticias</h4>
 
-        <br>
+        <p>{{new.title}}</p>
+        <a href="{{new.link}}">Ver</a>
       </ion-item>
 
     </ion-list>
+    <ion-list>
+      <ion-item ng-repeat="image in vm.images">
+        <h4>Instagram </h4>
+
+        <p><img ng-src="{{image.user.profile_picture}}" style="border-radius: 40px;width:20px;">{{image.user.full_name}}
+        </p>
+        <img ng-src="{{image.images.low_resolution.url}}">
+
+        <p>{{image.caption.text}}</p>
+      </ion-item>
+
+    </ion-list>
+
 
     <!--<ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.markersEvents">-->
     <!--<ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id" closeClick="hideMarkerPopup()" onClicked="showMarkerPopup()">-->

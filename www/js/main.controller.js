@@ -2,8 +2,8 @@
   'use strict';
   angular.module('citymap.maps').controller('mainController', MainController);
 
-  MainController.$inject = ['MapsConfig','instagram'];
-  function MainController(MapsConfig, instagram) {
+  MainController.$inject = ['MapsConfig','instagram', '$http'];
+  function MainController(MapsConfig, instagram, $http) {
     var vm = this;
     vm.pickupLocation = { latitude: 20.6, longitude: -100.383333, id: 1};
     vm.deliveryLocation ={ latitude: 20.62, longitude: -100.383336, id: 2};
@@ -14,14 +14,21 @@
 
     vm.images = [];
     vm.labels = [];
+    vm.news = [];
     var options = {hash: 'queretaro'};
 
     activate();
 
     function activate() {
+      $http.jsonp('http://ajax.googleapis.com/ajax/services/feed/load?callback=JSON_CALLBACK&v=1.0&q=http://www.eluniversal.com.mx/rss/estados.xml').success(function(result){
+        console.log(result);
+        vm.news = result.responseData.feed.entries;
+      });
+
 
       instagram.get().success(function(response) {
         vm.images = response.data;
+        console.log(vm.images);
         //
         //angular.forEach(vm.images, function(image){
         //  var http = new XMLHttpRequest();

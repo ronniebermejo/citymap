@@ -52,7 +52,11 @@ app.factory('instagram', ['$http',
         //};
         //return $http.jsonp(url, config);
 
-        var endPoint = "https://api.instagram.com/v1/locations/213006150/media/recent?client_id=642176ece1e7445e99244cec26f4de1f&callback=JSON_CALLBACK";
+        var tulum = 225838969;
+        var qrp = 213006150;
+        var centro_historico =2489686;
+        var endPoint = "https://api.instagram.com/v1/locations/2489686/media/recent?client_id=642176ece1e7445e99244cec26f4de1f&callback=JSON_CALLBACK";
+        //var endPoint = "https://api.instagram.com/v1/tags/queretaro/media/recent?client_id=642176ece1e7445e99244cec26f4de1f&callback=JSON_CALLBACK";
         return $http.jsonp(endPoint);
       }
     };
