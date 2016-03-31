@@ -2,6 +2,8 @@
   "name": "citymap",
   "private": "true",
   "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.2.4"
+    "ionic": "driftyco/ionic-bower#1.2.4",
+    "exif-js": "^2.1",
+    "js-rich-marker": "^1.0"
   }
 }

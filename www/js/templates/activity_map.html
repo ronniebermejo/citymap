@@ -1,0 +1,17 @@
+<div>
+
+  <ui-gmap-google-map center='vm.map_options.center'
+                      zoom='vm.map_options.zoom'
+                      pan="true"
+                      options='vm.map_options'
+                      control='vm.control'
+                      dragabble="true">
+    <ui-gmap-markers
+      doRebuildAll="true"
+      models='vm.markers'
+      coords="'self'"
+      options="vm.map_options">
+    </ui-gmap-markers>
+  </ui-gmap-google-map>
+
+</div>

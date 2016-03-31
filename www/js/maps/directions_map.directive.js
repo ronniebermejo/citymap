@@ -157,7 +157,7 @@
       var loc = {};
       loc.marker = {
         options: {
-          icon: vm.map_options.icons.byondo_small_transparent_icon,
+          icon: vm.map_options.icons.small_transparent_icon,
           draggable: true,
           labelAnchor: '100 0',
           labelClass: 'labels'

@@ -1,5 +1,6 @@
 (function () {
   'use strict';
+  angular.module('citymap.maps', []);
   angular.module('citymap.maps').
   factory('MapsConfig', MapsConfig);
 
@@ -16,14 +17,16 @@
         disableDefaultUI: true,
         routeColor: "#0C60EE",
         styles: mapStyle(),
-        icons: mapIcons()
+        icons: mapIcons(),
+        zoom: 12,
+        center:{ latitude: 20.62, longitude: -100.383336, lng:-100.383336, lat: 20.62 }
       };
     }
 
     function mapIcons() {
       return {
-        byondo_small_transparent_icon:
-          '/imagery/byondo_tiny_inverted_logo.png',
+        small_transparent_icon:
+          '/imagery/tiny_inverted_logo.png',
         destination_icon:
           'imagery/green-circle-marker.png',
         red_circle:

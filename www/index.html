@@ -1,23 +1,28 @@
 <html ng-app="starter">
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
-  <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <meta http-equiv="Content-Security-Policy" content="default-src * blob:; script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos; *; style-src  &apos;self&apos; &apos;unsafe-inline&apos; *;">
   <title>citymap</title>
-  <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet"/>
-  <link href="css/style.css" rel="stylesheet"/>
-  <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+  <link href="http://code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script src="http://code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+  <script src="lib/exif-js/exif.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+  <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/24/5/overlay.js"></script>
+  <script src="lib/js-rich-marker-compiled.js"></script>
   <script src="http://example.gajotres.net/include/angular-google-maps/angular-google-maps.min.js"></script>
   <script src="http://example.gajotres.net/include/loadsh/lodash.min.js"></script>
   <script src="js/app.js"></script>
   <script src="js/maps/maps_config.js"></script>
   <script src="js/maps/directions_map.directive.js"></script>
+  <script src="js/maps/activity_map.directive.js"></script>
   <script src="js/maps/geocode.factory.js"></script>
   <script src="js/maps/google_directions.factory.js"></script>
+  <script src="js/instagram.factory.js"></script>
   <script src="js/main.controller.js"></script>
 
-</head>
+
 
 <body>
 
@@ -25,32 +30,39 @@
     <ion-nav-back-button class="button-clear">
       <i class="ion-arrow-left-c"></i> Back
     </ion-nav-back-button>
+
   </ion-nav-bar>
+  <ion-tabs tabs-style="tabs-icon-bottom" tabs-type="tabs-positive">
+
+    <ion-tab title="Map" icon="ion-map" href="#/">
+      <ion-nav-view name="home-tab"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="List" icon="ion-clipboard" href="#/list">
+      <ion-nav-view name="list-tab"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="Profile" icon="ion-person" href="#/profile">
+      <ion-nav-view name="profile-tab"></ion-nav-view>
+    </ion-tab>
+
+  </ion-tabs>
 
   <ion-nav-view></ion-nav-view>
-  <script id="home.html" type="text/ng-template">
+  <script id="home.html" type="text/ng-template">ope
     <ion-view view-title="citymap 0.1">
 
       <ion-content data-tap-disabled="true">
-
-          <div directions-map
+          <div activity-map
                options="vm.mapOptions"
-               ng-model="vm.route_info"
-               origin='vm.pickupLocation'
-               destination="vm.deliveryLocation">
+               items="vm.markers">
           </div>
-
-        <!--<ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.markersEvents">-->
-          <!--<ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id" closeClick="hideMarkerPopup()" onClicked="showMarkerPopup()">-->
-
-          <!--</ui-gmap-marker>-->
-        <!--</ui-gmap-google-map>-->
-
       </ion-content>
 
     </ion-view>
   </script>
-  <script src='//maps.googleapis.com/maps/api/js'></script>
+
+
 </body>
 </html>
 

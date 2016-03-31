@@ -1,26 +1,38 @@
-angular.module('citymap.maps', []);
-var nameApp = angular.module('starter', ['ionic', 'uiGmapgoogle-maps', 'citymap.maps']);
 
-nameApp.config(function($stateProvider, $urlRouterProvider) {
+var app = angular.module('starter', ['ionic', 'uiGmapgoogle-maps', 'citymap.maps', 'instagram']);
 
+app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $stateProvider
     .state('home', {
       url: '/',
       templateUrl: 'home.html',
       controller: 'mainController',
       controllerAs: 'vm'
+    })
+
+    .state('list', {
+      url: '/list',
+      templateUrl: 'js/templates/list.html',
+      controller: 'mainController',
+      controllerAs: 'vm'
+    })
+    .state('profile', {
+      url: '/profile',
+      templateUrl: 'js/templates/profile.html',
+      controller: 'mainController',
+      controllerAs: 'vm'
     });
-  $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/");
 
 });
 
 
-nameApp.controller('HomeCtrl', function($scope, uiGmapGoogleMapApi) {
+app.controller('HomeCtrl', function($scope, uiGmapGoogleMapApi) {
 
   $scope.myLocation = {
     lng : '',
     lat: ''
-  }
+  };
 
   $scope.options = {
     enableHighAccuracy: true,
@@ -59,11 +71,11 @@ nameApp.controller('HomeCtrl', function($scope, uiGmapGoogleMapApi) {
         labelClass: "marker-labels"
       };
     });
-  }
+  };
 
   $scope.handleError = function(error) {
     console.warn('ERROR(' + error.code + '): ' + error.message);
-  }
+  };
 
   navigator.geolocation.getCurrentPosition($scope.drawMap, $scope.handleError, $scope.options);
 

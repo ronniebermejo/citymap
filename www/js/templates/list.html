@@ -1,0 +1,35 @@
+<ion-view view-title="Activity Feed">
+
+  <ion-content data-tap-disabled="true">
+
+    <!--<ion-list>-->
+      <!--<ion-item>Event #1</ion-item>-->
+      <!--<ion-item>Event #2</ion-item>-->
+      <!--<ion-item>Place #3</ion-item>-->
+      <!--<ion-item>Phote #4</ion-item>-->
+      <!--<ion-item>Checkin #5</ion-item>-->
+    <!--</ion-list>-->
+
+    <ion-list>
+      <ion-item  ng-repeat="image in vm.images" >
+        <h4>Instagram </h4>
+        <p><img ng-src="{{image.user.profile_picture}}" style="border-radius: 40px;width:20px;">{{image.user.full_name}} </p>
+        <img ng-src="{{image.images.low_resolution.url}}">
+        <br>
+        <small>{{image.caption.text}}</small>
+
+        <br>
+      </ion-item>
+
+    </ion-list>
+
+    <!--<ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.markersEvents">-->
+    <!--<ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id" closeClick="hideMarkerPopup()" onClicked="showMarkerPopup()">-->
+
+    <!--</ui-gmap-marker>-->
+    <!--</ui-gmap-google-map>-->
+
+  </ion-content>
+
+
+</ion-view>
