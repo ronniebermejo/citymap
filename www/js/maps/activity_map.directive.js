@@ -12,7 +12,6 @@
       restrict: 'A',
       templateUrl: '/js/templates/activity_map.html',
       scope: {
-        items: '=',
         currentLocation: '=',
         options: '=',
         ngModel: '='
@@ -30,8 +29,9 @@
                                  uiGmapIsReady, MapsConfig) {
     // https://developers.google.com/maps/documentation/javascript/directions
     var vm = this;
-    var INITIAL_ZOOM = 9;
+    var INITIAL_ZOOM = 6;
     var pollingFunction;
+    vm.downtown = { lat: 20.6, lng: -100.383333, id: 1,latitude: 20.6, longitude:  -100.383333};
 
     // Map center is later on adjusted by the directions API
     vm.center = {latitude: 0, longitude: 0, lat: 0, lng: 0};
@@ -46,32 +46,40 @@
     activate();
 
     function activate() {
-
       uiGmapIsReady.promise().then(function() {
-        var displayedMap = vm.control.getGMap();
-        var mapCenter = new google.maps.LatLng(0, 0);
-
-        angular.forEach(vm.items, function (image) {
-          //var m = new RichMarker({
-          //  map: displayedMap,
-          //  id: image.id,
-          //  position: image.position,
-          //  draggable: true,
-          //  content: '<div class="my-marker"><div>This is a nice image</div>' +
-          //  '<div><img src="https://farm4.static.flickr.com/3212/3012579547_' +
-          //  '097e27ced9_m.jpg"/></div><div>You should drag it!</div></div>'
-          //});
-          //var m = new google.maps.Marker(
-          //  image
-          //);
-          vm.markers.push(image);
-
-        });
-
+        getPlaces();
       });
+    }
 
+    function getPlaces() {
+      var marker = new google.maps.Marker(
+         vm.downtown
+      );
+      vm.markers.push(marker);
+      var request = {
+        location:  vm.downtown,
+        radius: '500',
+        types: ['restaurant', 'cinema', 'bar','cafe', 'night_club']
+      };
 
+      var service = new google.maps.places.PlacesService(vm.control.getGMap());
+      service.nearbySearch(request, function (results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            var place = results[i];
+            vm.ngModel.push(place);
+            var marker = new google.maps.Marker({
+              map: vm.control.getGMap(),
+              id: i,
+              position: place.geometry.location
+            });
+            console.log(place);
 
+          }
+        } else {
+          console.log(status);
+        }
+      });
     }
 
 

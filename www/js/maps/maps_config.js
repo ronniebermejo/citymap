@@ -18,7 +18,7 @@
         routeColor: "#0C60EE",
         styles: mapStyle(),
         icons: mapIcons(),
-        zoom: 12,
+        zoom: 14,
         center:{ latitude: 20.62, longitude: -100.383336, lng:-100.383336, lat: 20.62 }
       };
     }

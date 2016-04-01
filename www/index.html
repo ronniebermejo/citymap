@@ -15,6 +15,8 @@
   <script src="lib/js-rich-marker-compiled.js"></script>
   <script src="http://example.gajotres.net/include/angular-google-maps/angular-google-maps.min.js"></script>
   <script src="http://example.gajotres.net/include/loadsh/lodash.min.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeOqQIErOglIRjvd81IWYVfRpaTkDNWnY&amp;libraries=places"></script>
+
   <script src="js/app.js"></script>
   <script src="js/maps/maps_config.js"></script>
   <script src="js/maps/directions_map.directive.js"></script>
@@ -61,8 +63,18 @@
       <ion-content data-tap-disabled="true">
           <div activity-map
                options="vm.mapOptions"
+               ng-model="vm.places"
                items="vm.markers">
           </div>
+        <ion-list>
+
+          <ion-item ng-repeat="place in vm.places">
+
+
+            <p><img ng-src="{{place.icon}}" style="border-radius: 40px;width:20px;">{{place.name}}
+
+          </ion-item>
+        </ion-list>
       </ion-content>
 
     </ion-view>

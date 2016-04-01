@@ -1,32 +1,50 @@
 <ion-view view-title="Activity Feed">
 
-  <ion-content data-tap-disabled="true">
-
-    <!--<ion-list>-->
-    <!--<ion-item>Event #1</ion-item>-->
-    <!--<ion-item>Event #2</ion-item>-->
-    <!--<ion-item>Place #3</ion-item>-->
-    <!--<ion-item>Phote #4</ion-item>-->
-    <!--<ion-item>Checkin #5</ion-item>-->
-    <!--</ion-list>-->
-
+  <ion-content data-tap-disabled="true" ng-controller="mainController" overflow-scroll="true">
+    <ion-refresher  refreshing-text="Refreshing.." on-refresh="doRefresh()"></ion-refresher>
     <ion-list>
+        <h4>Tendendcias de Internet</h4>
+        <div ng-bind-html='trend.content'></div>
+      </ion-item>
       <ion-item ng-repeat="new in vm.news">
         <h4>Noticias</h4>
-
         <p>{{new.title}}</p>
         <a href="{{new.link}}">Ver</a>
       </ion-item>
-
-    </ion-list>
-    <ion-list>
       <ion-item ng-repeat="image in vm.images">
+
+        <!--<pre>{{vm.images|json}}</pre>-->
         <h4>Instagram </h4>
 
         <p><img ng-src="{{image.user.profile_picture}}" style="border-radius: 40px;width:20px;">{{image.user.full_name}}
         </p>
         <img ng-src="{{image.images.low_resolution.url}}">
 
+        <hr>
+        <p>{{image.caption.text}}</p>
+      </ion-item>
+      <ion-item ng-repeat="image in vm.images_2">
+
+        <!--<pre>{{vm.images|json}}</pre>-->
+        <h4>Instagram </h4>
+
+        <p><img ng-src="{{image.user.profile_picture}}" style="border-radius: 40px;width:20px;">{{image.user.full_name}}
+        </p>
+        <img ng-src="{{image.images.low_resolution.url}}">
+
+        <hr>
+        <p>{{image.caption.text}}</p>
+      </ion-item>
+      <ion-item ng-repeat="image in vm.images_3">
+
+        <!--<pre>{{vm.images|json}}</pre>-->
+        <h4>Instagram </h4>
+
+        <p><img ng-src="{{image.user.profile_picture}}" style="border-radius: 40px;width:20px;">{{image.user.full_name}}
+        </p>
+        <img ng-src="{{image.images.low_resolution.url}}">
+
+        <hr>
         <p>{{image.caption.text}}</p>
       </ion-item>
 
@@ -38,6 +56,7 @@
 
     <!--</ui-gmap-marker>-->
     <!--</ui-gmap-google-map>-->
+    <ion-infinite-scroll immediate-check="false" on-infinite="loadMore()" distance="5%" ng-if="true"></ion-infinite-scroll>
 
   </ion-content>
 

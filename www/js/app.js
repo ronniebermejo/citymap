@@ -1,4 +1,4 @@
-
+angular.module('instagram',[]);
 var app = angular.module('starter', ['ionic', 'uiGmapgoogle-maps', 'citymap.maps', 'instagram']);
 
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
