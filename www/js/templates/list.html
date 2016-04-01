@@ -3,6 +3,7 @@
   <ion-content data-tap-disabled="true" ng-controller="mainController" overflow-scroll="true">
     <ion-refresher  refreshing-text="Refreshing.." on-refresh="doRefresh()"></ion-refresher>
     <ion-list>
+      <ion-item ng-repeat="trend in vm.trends">
         <h4>Tendendcias de Internet</h4>
         <div ng-bind-html='trend.content'></div>
       </ion-item>

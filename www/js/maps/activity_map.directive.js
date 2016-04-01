@@ -30,7 +30,6 @@
     // https://developers.google.com/maps/documentation/javascript/directions
     var vm = this;
     var INITIAL_ZOOM = 6;
-    var pollingFunction;
     vm.downtown = { lat: 20.6, lng: -100.383333, id: 1,latitude: 20.6, longitude:  -100.383333};
 
     // Map center is later on adjusted by the directions API
@@ -52,10 +51,6 @@
     }
 
     function getPlaces() {
-      var marker = new google.maps.Marker(
-         vm.downtown
-      );
-      vm.markers.push(marker);
       var request = {
         location:  vm.downtown,
         radius: '500',
@@ -64,17 +59,16 @@
 
       var service = new google.maps.places.PlacesService(vm.control.getGMap());
       service.nearbySearch(request, function (results, status) {
-        if (status == google.maps.places.PlacesServiceStatus.OK) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
             var place = results[i];
             vm.ngModel.push(place);
-            var marker = new google.maps.Marker({
+            new google.maps.Marker({
               map: vm.control.getGMap(),
               id: i,
               position: place.geometry.location
             });
             console.log(place);
-
           }
         } else {
           console.log(status);
@@ -82,12 +76,5 @@
       });
     }
 
-
-    function startPolling() {
-      pollingFunction = $interval(function () {
-        vm.markers = [buildLocation(vm.currentLocation)];
-        vm.control.refresh();
-      }, 5000);
-    }
   }
 })();

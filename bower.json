@@ -4,6 +4,7 @@
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.2.4",
     "exif-js": "^2.1",
-    "js-rich-marker": "^1.0"
+    "jshint": "^2.9",
+    "js-rich-marker": "*"
   }
 }

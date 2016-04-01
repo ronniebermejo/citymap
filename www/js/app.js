@@ -1,94 +1,14 @@
-angular.module('instagram',[]);
-var app = angular.module('starter', ['ionic', 'uiGmapgoogle-maps',
-  'citymap.maps', 'instagram']);
+(function () {
+  'use strict';
 
-app.config(function($stateProvider, $urlRouterProvider) {
-
-  //thFoursquareProvider.config({
-  //  clientId: 'KX3DUHLUNAVDUMWNPAQHWNRWKFBYBJQIC5WVHXJZ0FFRZ0LF',
-  //  clientSecret: 'FK0OROYAHGJ4VP1A1SNL30GONFWIPQDTP0FRENJWDIVL1GGS',
-  //  redirectURI: 'http://www.etsoft.com.mx/redirect'
-  //});
-
-
-
-  // uncomment and adjust if you install AngularJS-Foursquare somewhere else.
-  // thFoursquareProvider.setPath('components/angularjs-foursquare');
-  $stateProvider
-    .state('home', {
-      url: '/',
-      templateUrl: 'home.html',
-      controller: 'mainController',
-      controllerAs: 'vm'
-    })
-
-    .state('list', {
-      url: '/list',
-      templateUrl: 'js/templates/list.html',
-      controller: 'mainController',
-      controllerAs: 'vm'
-    })
-    .state('profile', {
-      url: '/profile',
-      templateUrl: 'js/templates/profile.html',
-      controller: 'mainController',
-      controllerAs: 'vm'
-    });
-    $urlRouterProvider.otherwise("/");
-
-});
+  angular.module('citymap', []);
+  angular.module('starter', [
+    'ionic',
+    'uiGmapgoogle-maps',
+    'citymap.maps',
+    'citymap.config',
+    'instagram']
+  );
 
 
-app.controller('HomeCtrl', function($scope, uiGmapGoogleMapApi) {
-
-  $scope.myLocation = {
-    lng : '',
-    lat: ''
-  };
-
-  $scope.options = {
-    enableHighAccuracy: true,
-    timeout: 50000,
-    maximumAge: 0
-  };
-
-  $scope.drawMap = function(position) {
-
-    //$scope.$apply is needed to trigger the digest cycle when the geolocation arrives and to update all the watchers
-    $scope.$apply(function() {
-      $scope.myLocation.lng = position.coords.longitude;
-      $scope.myLocation.lat = position.coords.latitude;
-
-      $scope.map = {
-        center: {
-          latitude:  20.6,
-          longitude:-100.383333
-        },
-        zoom: 14,
-        pan: 1
-      };
-
-      $scope.marker = {
-        id: 0,
-        coords: {
-          latitude: $scope.myLocation.lat,
-          longitude: $scope.myLocation.lng
-        }
-      };
-
-      $scope.marker.options = {
-        draggable: false,
-        labelContent: "lat: " + $scope.marker.coords.latitude + '<br/> ' + 'lon: ' + $scope.marker.coords.longitude,
-        labelAnchor: "80 120",
-        labelClass: "marker-labels"
-      };
-    });
-  };
-
-  $scope.handleError = function(error) {
-    console.warn('ERROR(' + error.code + '): ' + error.message);
-  };
-
-  navigator.geolocation.getCurrentPosition($scope.drawMap, $scope.handleError, $scope.options);
-
-});
+})();
