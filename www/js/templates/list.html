@@ -16,12 +16,8 @@
 
         <!--<pre>{{vm.images|json}}</pre>-->
         <h4>Instagram </h4>
-
-        <p><img ng-src="{{image.user.profile_picture}}" style="border-radius: 40px;width:20px;">{{image.user.full_name}}
-        </p>
+        <p><img ng-src="{{image.user.profile_picture}}" style="border-radius: 40px;width:20px;">{{image.user.full_name}}</p>
         <img ng-src="{{image.images.low_resolution.url}}">
-
-        <hr>
         <small>{{image.caption.text}}</small>
       </ion-item>
       <ion-item ng-repeat="image in vm.images_2" class="item-text-wrap">
@@ -33,7 +29,6 @@
         </p>
         <img ng-src="{{image.images.low_resolution.url}}">
 
-        <hr>
         <div>
           <small>{{image.caption.text}}</small>
         </div>
