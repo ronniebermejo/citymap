@@ -8,9 +8,7 @@
     var nextUrl = 0;  // next max tag id - for fetching older photos
     var NewInsta = 0; // min tag id - for fetching newer photos
 
-    vm.pickupLocation = { latitude: 20.6, longitude: -100.383333, id: 1};
-    vm.deliveryLocation ={ latitude: 20.62, longitude: -100.383336, id: 2};
-    vm.deliveryLocation2 ={ latitude: 20.622, longitude: -100.383336, id: 3};
+    vm.initialLocation = { latitude: 20.6, longitude: -100.383333, id: 1};
     vm.mapOptions = MapsConfig.mapOptions();
     vm.markers = [ ];
 
@@ -23,12 +21,10 @@
     vm.places =[];
     vm.foursquare = [];
 
-
     vm.loadMore = loadMore;
     vm.doRefresh = doRefresh;
 
     activate();
-
 
     var TULUM = 225838969;
     var QRO = 213006150;
@@ -55,16 +51,6 @@
       getTrendTopics();
       getFourSquare();
 
-
-
-      //instagram.getByLocation(TULUM,nextUrl).success(function(response) {
-      //  vm.images = response.data;
-      //});
-
-      //instagram.getByLocation(TULUM, nextUrl).success(function(response) {
-      //  vm.images_2 = response.data;
-      //});
-
       instagram.getByHashTag('queretaro').success(function(response) {
         console.log(response);
         vm.images_2 = response.data;
@@ -83,35 +69,38 @@
     }
 
     function getNews() {
-      $http.jsonp('http://ajax.googleapis.com/ajax/services/feed/load?callback=JSON_CALLBACK&v=1.0&q=http://www.eluniversal.com.mx/rss/estados.xml').success(function (result) {
+      $http.jsonp('http://ajax.googleapis.com/ajax/services/feed/load?'+
+        'callback=JSON_CALLBACK&v=1.0&'+'' +
+        'q=http://www.eluniversal.com.mx/rss/estados.xml').success(function (result) {
         console.log(result);
         vm.news = result.responseData.feed.entries;
       });
     }
 
     function getTrendTopics() {
-      var TRENDS_URL ='http://ajax.googleapis.com/ajax/services/feed/load?callback=JSON_CALLBACK&v=1.0&q=http://www.google.com/trends/hottrends/atom/hourly?pn=p21';
+      var TRENDS_URL ='http://ajax.googleapis.com/ajax/services/feed/load?'+
+        'callback=JSON_CALLBACK&v=1.0&'+
+        'q=http://www.google.com/trends/hottrends/atom/hourly?pn=p21';
       $http({method: 'jsonp', url: TRENDS_URL}).success(function(results){
         vm.trends = results.responseData.feed.entries;
       },function(error){
         console.log(error);
-      })
+      });
     }
 
     function getFourSquare(){
-
-
-
-
-      var url = 'https://api.foursquare.com/v2/venues/search?client_id=KX3DUHLUNAVDUMWNPAQHWNRWKFBYBJQIC5WVHXJZ0FFRZ0LF&client_secret=FK0OROYAHGJ4VP1A1SNL30GONFWIPQDTP0FRENJWDIVL1GGS&v=20130815&ll=20.6,-100.383333&query=coffee?callback=JSON_CALLBACK';
+      var url = 'https://api.foursquare.com/v2/venues/search?'+
+        'client_id=KX3DUHLUNAVDUMWNPAQHWNRWKFBYBJQIC5WVHXJZ0FFRZ0LF&'+
+        'client_secret=FK0OROYAHGJ4VP1A1SNL30GONFWIPQDTP0FRENJWDIVL1GGS&v=20130815&'+
+        'll=20.6,-100.383333&'+
+        'query=coffee?'+
+        'callback=JSON_CALLBACK';
 
       $http.jsonp(url)
         .success(function(data){
           console.log(data);
         });
-
     }
-
 
     function getImageInfo(imageUrl) {
         var http = new XMLHttpRequest();
@@ -122,10 +111,10 @@
           if (this.status === 200) {
             var image = new Image();
             image.onload = function () {
-              EXIF.getData(image, function (data) {
+              EXIF.getData(image, function () {
                 console.log(EXIF.pretty(this));
                 var log = EXIF.pretty(this);
-                console.log("asdasdasdasdasdasas"+log);
+                console.log(log);
               });
             };
             image.src = URL.createObjectURL(http.response);

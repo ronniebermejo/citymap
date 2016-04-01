@@ -94,19 +94,6 @@
             distance: route.distance.text
           };
 
-          //// Fuzzy locations
-          //if (vm.options.fuzzy) {
-          //  showFuzzyMarkers(route);
-          //  supressMarkers = true;
-          //}
-
-          // Show only destination
-          //if (vm.options.destination) {
-          //  showDestinationMarker(route);
-          //  supressMarkers = true;
-          //}
-
-
           directionsDisplay = new google.maps.DirectionsRenderer({
             polylineOptions: { strokeColor: vm.map_options.routeColor }
           });
