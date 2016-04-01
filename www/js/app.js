@@ -1,7 +1,19 @@
 angular.module('instagram',[]);
-var app = angular.module('starter', ['ionic', 'uiGmapgoogle-maps', 'citymap.maps', 'instagram']);
+var app = angular.module('starter', ['ionic', 'uiGmapgoogle-maps',
+  'citymap.maps', 'instagram']);
 
-app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+app.config(function($stateProvider, $urlRouterProvider) {
+
+  //thFoursquareProvider.config({
+  //  clientId: 'KX3DUHLUNAVDUMWNPAQHWNRWKFBYBJQIC5WVHXJZ0FFRZ0LF',
+  //  clientSecret: 'FK0OROYAHGJ4VP1A1SNL30GONFWIPQDTP0FRENJWDIVL1GGS',
+  //  redirectURI: 'http://www.etsoft.com.mx/redirect'
+  //});
+
+
+
+  // uncomment and adjust if you install AngularJS-Foursquare somewhere else.
+  // thFoursquareProvider.setPath('components/angularjs-foursquare');
   $stateProvider
     .state('home', {
       url: '/',

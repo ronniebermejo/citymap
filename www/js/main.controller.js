@@ -2,8 +2,8 @@
   'use strict';
   angular.module('citymap.maps').controller('mainController', MainController);
 
-  MainController.$inject = ['MapsConfig','instagram', '$http', '$rootScope'];
-  function MainController(MapsConfig, instagram, $http, $rootScope) {
+  MainController.$inject = ['MapsConfig','instagram', '$http' ];
+  function MainController(MapsConfig, instagram, $http ) {
     var vm = this;
     var nextUrl = 0;  // next max tag id - for fetching older photos
     var NewInsta = 0; // min tag id - for fetching newer photos
@@ -21,6 +21,7 @@
     vm.news = [];
     vm.trends = [];
     vm.places =[];
+    vm.foursquare = [];
 
 
     vm.loadMore = loadMore;
@@ -52,6 +53,7 @@
     function activate() {
       getNews();
       getTrendTopics();
+      getFourSquare();
 
 
 
@@ -96,6 +98,19 @@
       })
     }
 
+    function getFourSquare(){
+
+
+
+
+      var url = 'https://api.foursquare.com/v2/venues/search?client_id=KX3DUHLUNAVDUMWNPAQHWNRWKFBYBJQIC5WVHXJZ0FFRZ0LF&client_secret=FK0OROYAHGJ4VP1A1SNL30GONFWIPQDTP0FRENJWDIVL1GGS&v=20130815&ll=20.6,-100.383333&query=coffee?callback=JSON_CALLBACK';
+
+      $http.jsonp(url)
+        .success(function(data){
+          console.log(data);
+        });
+
+    }
 
 
     function getImageInfo(imageUrl) {
