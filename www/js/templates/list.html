@@ -3,16 +3,16 @@
   <ion-content data-tap-disabled="true" ng-controller="mainController" overflow-scroll="true">
     <ion-refresher  refreshing-text="Refreshing.." on-refresh="doRefresh()"></ion-refresher>
     <ion-list>
-      <ion-item ng-repeat="trend in vm.trends">
+      <ion-item ng-repeat="trend in vm.trends" class="item-text-wrap">
         <h4>Tendendcias de Internet</h4>
         <div ng-bind-html='trend.content'></div>
       </ion-item>
-      <ion-item ng-repeat="new in vm.news">
+      <ion-item ng-repeat="new in vm.news" class="item-text-wrap">
         <h4>Noticias</h4>
         <p>{{new.title}}</p>
         <a href="{{new.link}}">Ver</a>
       </ion-item>
-      <ion-item ng-repeat="image in vm.images">
+      <ion-item ng-repeat="image in vm.images" class="item-text-wrap">
 
         <!--<pre>{{vm.images|json}}</pre>-->
         <h4>Instagram </h4>
@@ -22,9 +22,9 @@
         <img ng-src="{{image.images.low_resolution.url}}">
 
         <hr>
-        <p>{{image.caption.text}}</p>
+        <small>{{image.caption.text}}</small>
       </ion-item>
-      <ion-item ng-repeat="image in vm.images_2">
+      <ion-item ng-repeat="image in vm.images_2" class="item-text-wrap">
 
         <!--<pre>{{vm.images|json}}</pre>-->
         <h4>Instagram </h4>
@@ -34,9 +34,12 @@
         <img ng-src="{{image.images.low_resolution.url}}">
 
         <hr>
-        <p>{{image.caption.text}}</p>
+        <div>
+          <small>{{image.caption.text}}</small>
+        </div>
+
       </ion-item>
-      <ion-item ng-repeat="image in vm.images_3">
+      <ion-item ng-repeat="image in vm.images_3" class="item-text-wrap">
 
         <!--<pre>{{vm.images|json}}</pre>-->
         <h4>Instagram </h4>

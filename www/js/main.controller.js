@@ -69,12 +69,14 @@
     }
 
     function getNews() {
+      //http://aristeguinoticias.com/canales-rss-en-aristegui-noticias/
       $http.jsonp('http://ajax.googleapis.com/ajax/services/feed/load?'+
         'callback=JSON_CALLBACK&v=1.0&'+'' +
-        'q=http://www.eluniversal.com.mx/rss/estados.xml').success(function (result) {
+        'q=http://aristeguinoticias.com/feed/').success(function (result) {
         console.log(result);
         vm.news = result.responseData.feed.entries;
       });
+
     }
 
     function getTrendTopics() {
