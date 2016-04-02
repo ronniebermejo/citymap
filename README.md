@@ -1,5 +1,6 @@
 # citymap
 
+1. Install ionic: http://ionicframework.com/
 
 3. ionic platform add android
 4. cordova plugin add cordova-plugin-whitelist
@@ -19,7 +20,7 @@ jshint, check configuration `.jshintrc`
 We may want to create a gulp/grunt task for it.
 
 Install: 
-   -  sudo npm install -g jshint
+   -  `sudo npm install -g jshint`
    
 Run: 
-   - jshint www/js
+    `jshint www/js`
