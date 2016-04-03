@@ -2,8 +2,8 @@
   'use strict';
   angular.module('citymap.maps').controller('mainController', MainController);
 
-  MainController.$inject = ['MapsConfig','instagram', '$http' ];
-  function MainController(MapsConfig, instagram, $http ) {
+  MainController.$inject = ['$scope', 'MapsConfig','instagram','weather', '$http' ];
+  function MainController($scope, MapsConfig, instagram, weather, $http ) {
     var vm = this;
     var nextUrl = 0;  // next max tag id - for fetching older photos
     var NewInsta = 0; // min tag id - for fetching newer photos
@@ -20,6 +20,7 @@
     vm.trends = [];
     vm.places =[];
     vm.foursquare = [];
+    vm.weather = 0;
 
     vm.loadMore = loadMore;
     vm.doRefresh = doRefresh;
@@ -41,14 +42,20 @@
     }
 
     function doRefresh(){
-      instagram.getByLocation(QRO_CENTRO_HISTORICO, nextUrl).success(function(response) {
-        nextUrl = response.pagination.next_max_tag_id;
-        NewInsta = response.pagination.min_tag_id;
-        vm.images.push(response.data);
-      });
+      vm.images = [];
+      vm.images_2 = [];
+      vm.images_3 = [];
+      vm.labels = [];
+      vm.news = [];
+      vm.trends = [];
+      vm.places =[];
+      vm.date = new Date();
+      activate();
+      $scope.$broadcast('scroll.refreshComplete');
     }
 
     function activate() {
+      getWeather();
       getNews();
       getTrendTopics();
       getFourSquare();
@@ -67,6 +74,15 @@
         vm.images = response.data;
         nextUrl = response.pagination.next_max_tag_id;
         NewInsta = response.pagination.min_tag_id;
+      });
+    }
+
+    function getWeather(){
+      weather.getByLocation().success(function(response){
+        vm.weather = response;
+        console.log(response);
+      },function(error){
+        console.log(error);
       });
     }
 

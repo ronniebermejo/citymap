@@ -6,6 +6,7 @@
     'ionic',
     'uiGmapgoogle-maps',
     'citymap.maps',
+    'citymap.weather',
     'citymap.config',
     'instagram']
   );
