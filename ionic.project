@@ -1,4 +1,8 @@
 {
   "name": "citymap",
-  "app_id": "37537579"
+  "app_id": "37537579",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ]
 }

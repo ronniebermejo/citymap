@@ -1,0 +1,12 @@
+<div class="image-card">
+  <img ng-src="{{vm.ngModel.images.low_resolution.url}}" class="main-image">
+  <br>
+  <div class="image-card-content">
+    <img ng-src="{{vm.ngModel.user.profile_picture}}" class='mini-profile-image' align="left">
+    <p class="profile-label">{{vm.ngModel.user.full_name}}</p>
+    <hr>
+    <br>
+    <p>{{vm.ngModel.location.name}}</p>
+    <p>{{vm.ngModel.caption.text}}</p>
+  </div>
+</div>

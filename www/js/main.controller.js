@@ -24,6 +24,8 @@
     vm.loadMore = loadMore;
     vm.doRefresh = doRefresh;
 
+    vm.date = new Date();
+
     activate();
 
     var TULUM = 225838969;
@@ -73,8 +75,39 @@
       $http.jsonp('http://ajax.googleapis.com/ajax/services/feed/load?'+
         'callback=JSON_CALLBACK&v=1.0&'+'' +
         'q=http://aristeguinoticias.com/feed/').success(function (result) {
+        var news = _.filter(result.responseData.feed.entries, function(entry){
+          return entry.title.match(/quer.taro/i)
+        });
+        vm.news.push(news);
+        vm.news = _.flatten(vm.news);
+      });
+
+      $http.jsonp('http://ajax.googleapis.com/ajax/services/feed/load?'+
+        'callback=JSON_CALLBACK&v=1.0&'+'' +
+        'q=http://www.jornada.unam.mx/rss/estados.xml').success(function (result) {
         console.log(result);
-        vm.news = result.responseData.feed.entries;
+        var news = _.filter(result.responseData.feed.entries, function(entry){
+          return entry.title.match(/quer.taro/i)
+        });
+        vm.news.push(news);
+        vm.news = _.flatten(vm.news);
+      });
+
+      $http.jsonp('http://ajax.googleapis.com/ajax/services/feed/load?'+
+        'callback=JSON_CALLBACK&v=1.0&'+'' +
+        'q=http://www.jornada.unam.mx/rss/deportes.xml').success(function (result) {
+        var news = _.filter(result.responseData.feed.entries, function(entry){
+          return entry.title.match(/quer.taro/i)
+        });
+        vm.news.push(news);
+        vm.news = _.flatten(vm.news);
+      });
+
+      $http.jsonp('http://ajax.googleapis.com/ajax/services/feed/load?'+
+        'callback=JSON_CALLBACK&v=1.0&'+'' +
+        'q=http://www.20minutos.com.mx/rss/minuteca/queretaro/').success(function (result) {
+        vm.news.push(result.responseData.feed.entries);
+        vm.news = _.flatten(vm.news);
       });
 
     }

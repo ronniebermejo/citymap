@@ -6,7 +6,7 @@
   <title>citymap</title>
 
   <link href="http://code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
+  <link href="css/ionic.app.css" rel="stylesheet">
   <script src="http://code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
   <script src="lib/exif-js/exif.js"></script>
 
@@ -26,12 +26,12 @@
   <script src="js/maps/activity_map.directive.js"></script>
   <script src="js/maps/geocode.factory.js"></script>
   <script src="js/maps/google_directions.factory.js"></script>
-  <script src="js/instagram.factory.js"></script>
+  <script src="js/instagram/instagram.factory.js"></script>
+  <script src="js/instagram/instagram_card.directive.js"></script>
   <script src="js/main.controller.js"></script>
 
   <head>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
   </head>
 
 
@@ -70,20 +70,13 @@
                items="vm.markers">
           </div>
         <ion-list>
-
           <ion-item ng-repeat="place in vm.places">
-
-
             <p><img ng-src="{{place.icon}}" style="border-radius: 40px;width:20px;">{{place.name}}
-
           </ion-item>
         </ion-list>
       </ion-content>
-
     </ion-view>
   </script>
-
-
 </body>
 </html>
 
