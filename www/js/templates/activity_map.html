@@ -1,5 +1,5 @@
 <div>
-
+  <div id='map'></div>
   <ui-gmap-google-map center='vm.map_options.center'
                       zoom='vm.map_options.zoom'
                       pan="true"
@@ -13,7 +13,17 @@
       options="vm.map_options">
     </ui-gmap-markers>
   </ui-gmap-google-map>
+  <ion-list>
 
+    <ion-item ng-repeat="place in vm.places">
+
+      <!--<pre>{{vm.images|json}}</pre>-->
+      <pre>{{vm.places}}</pre>
+
+      <p><img ng-src="{{place.icon}}" style="border-radius: 40px;width:20px;">{{place.name}}</p>
+
+    </ion-item>
+  </ion-list>
 </div>
 
 

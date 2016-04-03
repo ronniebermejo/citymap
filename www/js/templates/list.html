@@ -7,6 +7,8 @@
         <h4>Tendendcias de Internet</h4>
         <div ng-bind-html='trend.content'></div>
       </ion-item>
+
+
       <ion-item ng-repeat="new in vm.news" class="item-text-wrap">
         <h4>Noticias</h4>
         <p>{{new.title}}</p>
@@ -14,37 +16,42 @@
       </ion-item>
       <ion-item ng-repeat="image in vm.images" class="item-text-wrap">
 
-        <!--<pre>{{vm.images|json}}</pre>-->
-        <h4>Instagram </h4>
-        <p><img ng-src="{{image.user.profile_picture}}" style="border-radius: 40px;width:20px;">{{image.user.full_name}}</p>
-        <img ng-src="{{image.images.low_resolution.url}}">
-        <small>{{image.caption.text}}</small>
-      </ion-item>
-      <ion-item ng-repeat="image in vm.images_2" class="item-text-wrap">
+        <!--&lt;!&ndash;<pre>{{vm.images|json}}</pre>&ndash;&gt;-->
+        <!--<div class="image-card">-->
+          <!--<img ng-src="{{image.images.low_resolution.url}}">-->
+          <!--<small>{{image.location.name}}</small>-->
+          <!--<small>{{image.caption.text}}</small>-->
+          <!--<p><img ng-src="{{image.user.profile_picture}}" style="border-radius: 40px;width:20px;">{{image.user.full_name}}</p>-->
 
-        <!--<pre>{{vm.images|json}}</pre>-->
-        <h4>Instagram </h4>
-
-        <p><img ng-src="{{image.user.profile_picture}}" style="border-radius: 40px;width:20px;">{{image.user.full_name}}
-        </p>
-        <img ng-src="{{image.images.low_resolution.url}}">
-
-        <div>
-          <small>{{image.caption.text}}</small>
-        </div>
+        <!--</div>-->
 
       </ion-item>
+      <!--<ion-item ng-repeat="image in vm.images_2" class="item-text-wrap">-->
+
+        <!--&lt;!&ndash;<pre>{{vm.images|json}}</pre>&ndash;&gt;-->
+        <!--<div class="image-card">-->
+          <!--<img ng-src="{{image.user.profile_picture}}" style="border-radius: 40px;width:20px;">{{image.user.full_name}}-->
+          <!--<img ng-src="{{image.images.low_resolution.url}}">-->
+          <!--<small>{{image.location.name}}</small>-->
+          <!--<small>{{image.caption.text}}</small>-->
+        <!--</div>-->
+      <!--</ion-item>-->
       <ion-item ng-repeat="image in vm.images_3" class="item-text-wrap">
 
         <!--<pre>{{vm.images|json}}</pre>-->
-        <h4>Instagram </h4>
+        <div class="image-card">
+          <img ng-src="{{image.images.low_resolution.url}}" class="main-image">
+          <br>
+          <div class="image-card-content">
+            <img ng-src="{{image.user.profile_picture}}" class='mini-profile-image' align="left">
+            <p class="profile-label">{{image.user.full_name}}</p>
+            <hr>
+            <br>
+            <p>{{image.location.name}}</p>
+            <p>{{image.caption.text}}</p>
+          </div>
 
-        <p><img ng-src="{{image.user.profile_picture}}" style="border-radius: 40px;width:20px;">{{image.user.full_name}}
-        </p>
-        <img ng-src="{{image.images.low_resolution.url}}">
-
-        <hr>
-        <p>{{image.caption.text}}</p>
+        </div>
       </ion-item>
 
     </ion-list>

@@ -51,25 +51,30 @@
     }
 
     function getPlaces() {
+      var mapCenter = new google.maps.LatLng(0, 0);
+
       var request = {
         location:  vm.downtown,
-        radius: '500',
-        types: ['restaurant', 'cinema', 'bar','cafe', 'night_club']
+        radius: '13500',
+        types: ['restaurant', 'cinema', 'bar','cafe', 'night_club', 'hotel']
       };
+
 
       var service = new google.maps.places.PlacesService(vm.control.getGMap());
       service.nearbySearch(request, function (results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
             var place = results[i];
-            vm.ngModel.push(place);
-            new google.maps.Marker({
-              map: vm.control.getGMap(),
-              id: i,
-              position: place.geometry.location
-            });
+
+              vm.ngModel.push(place);
+              new google.maps.Marker({
+                map: vm.control.getGMap(),
+                id: i,
+                position: place.geometry.location
+              });
+            }
+
             console.log(place);
-          }
         } else {
           console.log(status);
         }
