@@ -24,6 +24,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import url(https://fonts.googleapis.com/css?family=Cabin:400,700);
 @import url(https://fonts.googleapis.com/css?family=Oswald);
 
+
+$color1: #efefef;
+
 body {
   font-family: Oswald;
 }
@@ -53,7 +56,7 @@ body {
 
 
 .image-card {
-  border: 1px solid silver;
+  border: 1px solid $color1;
   border-radius: 10px;
   padding-top: 0px;
 
@@ -61,7 +64,7 @@ body {
     width: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    border-bottom: 1px solid silver;
+    border-bottom: 2px solid $color1;
   }
 
   p {
@@ -77,7 +80,7 @@ body {
   .mini-profile-image {
     border-radius: 40px;
     vertical-align: middle;
-    border: 2px solid #0a9dc7;
+    border: 2px solid $color1;
     width:40px;
     display: block;
     margin: 0 auto;

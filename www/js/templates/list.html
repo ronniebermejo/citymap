@@ -3,10 +3,9 @@
 
   <ion-content data-tap-disabled="true" ng-controller="mainController" overflow-scroll="true">
 
-    <ion-refresher refreshing-text="Refreshing.." on-refresh="doRefresh()">
+    <ion-refresher refreshing-text="Cargando.." on-refresh="vm.doRefresh()" pulling-text="Cargar mas ..">
       <ion-spinner icon="spiral"></ion-spinner>
     </ion-refresher>
-
     <div class="image-header">
       <img src="http://www.grupotravel.com/gestor_web/contenido/img/5463e9b5c8e79.jpg" width="100%">
       <div class="header-title">
@@ -14,21 +13,24 @@
           Queretaro, Mx.
         </h4>
         <h5>
-          {{vm.date | date:'MMMM, dd yyyy'}}
+        {{vm.weather.currently.temperature}} &#8451;
         </h5>
+        <p>
+         {{vm.date | date:'HH:MM MMMM, dd yyyy'}}
+        </p>
       </div>
     </div>
     <ion-list>
-      <ion-item ng-repeat="trend in vm.trends" class="item-text-wrap" href="trend.link">
-        <h4>Tendendcias de Internet</h4>
-        <div ng-bind-html='trend.content'></div>
-      </ion-item>
-      <ion-item ng-repeat="new in vm.news" class="item-text-wrap">
-        <h4>Noticias</h4>
+      <!--<ion-item ng-repeat="trend in vm.trends" class="item-text-wrap" href="trend.link">-->
+        <!--<h4>Tendendcias de Internet</h4>-->
+        <!--<div ng-bind-html='trend.content'></div>-->
+      <!--</ion-item>-->
+      <!--<ion-item ng-repeat="new in vm.news" class="item-text-wrap">-->
+        <!--<h4>Noticias</h4>-->
 
-        <p>{{new.title}}</p>
-        <a href="{{new.link}}">Ver</a>
-      </ion-item>
+        <!--<p>{{new.title}}</p>-->
+        <!--<a href="{{new.link}}">Ver</a>-->
+      <!--</ion-item>-->
       <ion-item ng-repeat="image in vm.images" class="item-text-wrap">
         <div class="instagram-card" ng-model="image"></div>
       </ion-item>
