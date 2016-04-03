@@ -24,6 +24,8 @@
     vm.loadMore = loadMore;
     vm.doRefresh = doRefresh;
 
+    vm.date = new Date();
+
     activate();
 
     var TULUM = 225838969;

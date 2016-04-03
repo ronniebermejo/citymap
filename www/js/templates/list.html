@@ -1,40 +1,48 @@
-<ion-view view-title="Activity Feed">
+<ion-view view-title="Queretaro Ahora">
+
 
   <ion-content data-tap-disabled="true" ng-controller="mainController" overflow-scroll="true">
-    <ion-refresher  refreshing-text="Refreshing.." on-refresh="doRefresh()"></ion-refresher>
+
+    <ion-refresher refreshing-text="Refreshing.." on-refresh="doRefresh()">
+      <ion-spinner icon="spiral"></ion-spinner>
+    </ion-refresher>
+
+    <div class="image-header">
+      <img src="http://www.grupotravel.com/gestor_web/contenido/img/5463e9b5c8e79.jpg" width="100%">
+      <div class="header-title">
+        <h4>
+          Queretaro, Mx.
+        </h4>
+        <h5>
+          {{vm.date | date:'MMMM, dd yyyy'}}
+        </h5>
+      </div>
+    </div>
     <ion-list>
-      <ion-item ng-repeat="trend in vm.trends" class="item-text-wrap">
+      <ion-item ng-repeat="trend in vm.trends" class="item-text-wrap" href="trend.link">
         <h4>Tendendcias de Internet</h4>
         <div ng-bind-html='trend.content'></div>
       </ion-item>
-
-
       <ion-item ng-repeat="new in vm.news" class="item-text-wrap">
         <h4>Noticias</h4>
+
         <p>{{new.title}}</p>
         <a href="{{new.link}}">Ver</a>
       </ion-item>
       <ion-item ng-repeat="image in vm.images" class="item-text-wrap">
-          <instagram-card ng-model="image"></instagram-card>
+        <div class="instagram-card" ng-model="image"></div>
       </ion-item>
       <ion-item ng-repeat="image in vm.images_2" class="item-text-wrap">
-        <instagram-card ng-model="image"></instagram-card>
+        <div class="instagram-card" ng-model="image"></div>
       </ion-item>
       <ion-item ng-repeat="image in vm.images_3" class="item-text-wrap">
-        <instagram-card ng-model="image"></instagram-card>
+        <div class="instagram-card" ng-model="image"></div>
       </ion-item>
 
     </ion-list>
-
-
-    <!--<ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.markersEvents">-->
-    <!--<ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id" closeClick="hideMarkerPopup()" onClicked="showMarkerPopup()">-->
-
-    <!--</ui-gmap-marker>-->
-    <!--</ui-gmap-google-map>-->
-    <ion-infinite-scroll immediate-check="false" on-infinite="loadMore()" distance="5%" ng-if="true"></ion-infinite-scroll>
+    <ion-infinite-scroll immediate-check="false" on-infinite="loadMore()" distance="5%"
+                         ng-if="true"></ion-infinite-scroll>
 
   </ion-content>
-
 
 </ion-view>
