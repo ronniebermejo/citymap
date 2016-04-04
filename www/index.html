@@ -1,14 +1,20 @@
 <html ng-app="starter">
-
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-  <meta http-equiv="Content-Security-Policy" content="default-src * blob:; script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos; *; style-src  &apos;self&apos; &apos;unsafe-inline&apos; *;">
+  <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
   <title>citymap</title>
 
   <link href="http://code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
   <link href="css/ionic.app.css" rel="stylesheet">
   <script src="http://code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+ 
   <script src="lib/exif-js/exif.js"></script>
+
+  <!--- LIBS  -->
+  <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+  <script src="lib/ng-cordova-oauth/dist/ng-cordova-oauth.min.js"></script>
+  <script src="lib/ng-twitter-api/dist/ng-twitter-api.min.js"></script>
+  <script src="lib/jsSHA/src/sha1.js"></script>
 
   <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
   <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/24/5/overlay.js"></script>
@@ -17,6 +23,8 @@
 
   <script src="http://example.gajotres.net/include/loadsh/lodash.min.js"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeOqQIErOglIRjvd81IWYVfRpaTkDNWnY&amp;libraries=places"></script>
+  <script src="cordova.js"></script>
+  <!--- END LIBS -->
 
   <script src="js/app.js"></script>
   <script src="js/app.config.js"></script>

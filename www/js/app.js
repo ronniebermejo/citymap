@@ -4,6 +4,9 @@
   angular.module('citymap', []);
   angular.module('starter', [
     'ionic',
+    'ngCordova',
+    'ngCordovaOauth',
+    'ngTwitter',
     'uiGmapgoogle-maps',
     'citymap.maps',
     'citymap.weather',

@@ -6,5 +6,10 @@
     "exif-js": "^2.1",
     "jshint": "^2.9",
     "js-rich-marker": "*"
+  },
+  "dependencies": {
+    "ng-twitter-api": "^0.1.5",
+    "ngCordova": "^0.1.24-alpha",
+    "ng-cordova-oauth": "^0.2.5"
   }
 }

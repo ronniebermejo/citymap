@@ -2,11 +2,24 @@
   'use strict';
   angular.module('citymap.maps').controller('mainController', MainController);
 
-  MainController.$inject = ['$scope', 'MapsConfig','instagram','weather', '$http' ];
-  function MainController($scope, MapsConfig, instagram, weather, $http ) {
+  MainController.$inject = ['$scope', '$ionicPlatform', '$cordovaOauth', 'MapsConfig','instagram','weather', '$http' ];
+  function MainController($scope, $ionicPlatform, $cordovaOauth, MapsConfig, instagram, weather, $http ) {
     var vm = this;
     var nextUrl = 0;  // next max tag id - for fetching older photos
     var NewInsta = 0; // min tag id - for fetching newer photos
+
+    var clientId = '';
+    var clientSecret = '';
+
+    $ionicPlatform.ready(function() {
+      $cordovaOauth.twitter(clientId, clientSecret).then(function (succ) {
+        console.log('twitter succ');
+        $twitterApi.configure(clientId, clientSecret, succ);
+      },
+      function(error) {
+        console.log('twitter: ' + error);
+      });
+    });
 
     vm.initialLocation = { latitude: 20.6, longitude: -100.383333, id: 1};
     vm.mapOptions = MapsConfig.mapOptions();
