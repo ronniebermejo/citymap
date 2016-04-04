@@ -5,6 +5,7 @@
     "ionic": "driftyco/ionic-bower#1.2.4",
     "exif-js": "^2.1",
     "jshint": "^2.9",
+    "angular-leaflet-directive": "0.10.0",
     "js-rich-marker": "*"
   }
 }

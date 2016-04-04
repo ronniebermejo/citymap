@@ -16,7 +16,21 @@
         controller: 'mainController',
         controllerAs: 'vm'
       })
+      .state('instagram_image', {
+        url: '/iimage/:imageId',
+        templateUrl: 'js/templates/instagram_image.html',
+        controller: 'instagramViewController',
+        controllerAs: 'vm',
+        //resolve: {
+        //  image: ['$stateParams', 'instagram',
+        //    function ($stateParams, instagram) {
+        //      return instagram.getImageById($stateParams.imageId).success(function (result) {
+        //        return result.data;
+        //      });
+        //    }]
+        //}
 
+      })
       .state('list', {
         url: '/list',
         templateUrl: 'js/templates/list.html',

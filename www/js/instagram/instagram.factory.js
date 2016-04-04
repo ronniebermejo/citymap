@@ -18,18 +18,29 @@
 
     var service = {
       getByLocation: getByLocation,
+      getById: getById,
       getByHashTag: getByHashTag
     };
 
     return service;
 
+    function getById(imageId) {
+      var endPoint = "https://api.instagram.com/v1/" +
+        "media/" +
+        imageId +
+        "/?client_id="+
+        clientId +
+        "&callback=JSON_CALLBACK";
+
+      return $http.jsonp(endPoint);
+    }
+
     function getByLocation(locationId, NewInsta) {
+      console.log(locationId);
 
       var endPoint = "https://api.instagram.com/v1/locations/" +
-        locationId +
-        "/media/recent?&min_tag_id=" +
-        NewInsta +
-        "&client_id="+
+        locationId + "/media/recent/" +
+        "?&client_id="+
         clientId +
         "&callback=JSON_CALLBACK";
 

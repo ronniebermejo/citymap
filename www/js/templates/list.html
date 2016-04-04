@@ -8,6 +8,7 @@
     </ion-refresher>
     <div class="image-header">
       <img src="http://www.grupotravel.com/gestor_web/contenido/img/5463e9b5c8e79.jpg" width="100%">
+      <!--<img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Acueductos_Ciudad_de_Quer%C3%A9taro,_M%C3%A9xico.jpg" width="100%">-->
       <div class="header-title">
         <h4>
           Queretaro, Mx.
@@ -18,6 +19,7 @@
         <p>
          {{vm.date | date:'HH:MM MMMM, dd yyyy'}}
         </p>
+        <!--<a href="http://148.220.4.15:8000/listen.mp3">Radio Universidad</a>-->
       </div>
     </div>
     <ion-list>
@@ -34,13 +36,6 @@
       <ion-item ng-repeat="image in vm.images" class="item-text-wrap">
         <div class="instagram-card" ng-model="image"></div>
       </ion-item>
-      <ion-item ng-repeat="image in vm.images_2" class="item-text-wrap">
-        <div class="instagram-card" ng-model="image"></div>
-      </ion-item>
-      <ion-item ng-repeat="image in vm.images_3" class="item-text-wrap">
-        <div class="instagram-card" ng-model="image"></div>
-      </ion-item>
-
     </ion-list>
     <ion-infinite-scroll immediate-check="false" on-infinite="loadMore()" distance="5%"
                          ng-if="true"></ion-infinite-scroll>
