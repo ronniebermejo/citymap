@@ -2,7 +2,9 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-  <meta http-equiv="Content-Security-Policy" content="default-src * blob:; script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos; *; style-src  &apos;self&apos; &apos;unsafe-inline&apos; *;">
+  <!--Change when in production-->
+  <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; media-src *; img-src *; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com *.ionic.io *.openstreetmap.org; style-src 'self' 'unsafe-inline'; media-src *; img-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval'">-->
   <title>citymap</title>
 
   <link href="http://code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
@@ -12,13 +14,8 @@
   <link href="lib/leaflet/dist/leaflet.css" rel="stylesheet">
   <script src="lib/leaflet/dist/leaflet.js"></script>
 
-  <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
-  <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/24/5/overlay.js"></script>
-  <script src="lib/js-rich-marker-compiled.js"></script>
-  <script src="http://example.gajotres.net/include/angular-google-maps/angular-google-maps.min.js"></script>
 
   <script src="http://example.gajotres.net/include/loadsh/lodash.min.js"></script>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeOqQIErOglIRjvd81IWYVfRpaTkDNWnY&amp;libraries=places"></script>
 
   <script src="js/app.js"></script>
   <script src="lib/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
@@ -34,11 +31,6 @@
   <script src="js/instagram/instagram_view.controller.js"></script>
   <script src="js/instagram/instagram_card.directive.js"></script>
   <script src="js/main.controller.js"></script>
-
-  <head>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-  </head>
-
 
 <body>
 
@@ -68,7 +60,7 @@
   <script id="home.html" type="text/ng-template">
     <ion-view view-title="queretaro">
       <ion-content data-tap-disabled="true">
-        <leaflet markers="vm.markers" id='map' lf-center="vm.initialLocation" height="480px" width="440px"></leaflet>
+        <leaflet markers="vm.markers" id='map' lf-center="vm.initialLocation" tiles="vm.tiles" height="480px" width="440px"></leaflet>
         <!--<ion-list>-->
           <!--<ion-item ng-repeat="place in vm.places">-->
             <!--<p><img ng-src="{{place.icon}}" style="border-radius: 40px;width:20px;">{{place.name}}-->

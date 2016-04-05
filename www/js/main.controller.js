@@ -7,8 +7,12 @@
     var vm = this;
     var nextUrl = 0;  // next max tag id - for fetching older photos
     var NewInsta = 0; // min tag id - for fetching newer photos
+    vm.tiles = {
+      url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    }
     vm.initialLocation = {
-      lat: 20.6, lng: -100.383333, zoom: 12, icon: {
+
+      lat: 20.6, lng: -100.383333, zoom: 11, icon: {
         iconUrl: 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/map-marker-icon.png',
         iconSize: [32]
       }
@@ -66,7 +70,7 @@
       getWeather();
       getNews();
       getTrendTopics();
-      getFourSquare();
+      //getFourSquare();
     }
 
     function getInstagram() {
@@ -96,8 +100,6 @@
 
       console.log(vm.placesToLook);
       _.each(vm.placesToLook, function (place) {
-        console.log(place);
-        console.log("Adasdadadasasdasdsa");
         instagram.getByLocation(place, nextUrl).success(function (response) {
           nextUrl = response.pagination.next_max_tag_id;
           NewInsta = response.pagination.min_tag_id;

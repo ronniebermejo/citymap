@@ -10,7 +10,7 @@
   function DirectionsMap() {
     var directive = {
       restrict: 'A',
-      templateUrl: '/js/templates/directions_map.html',
+      templateUrl: 'js/templates/directions_map.html',
       scope: {
         origin: '=',
         destination: '=',

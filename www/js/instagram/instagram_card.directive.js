@@ -10,7 +10,7 @@
   function InstagramCard() {
     var directive = {
       restrict: 'AEC',
-      templateUrl: '/js/templates/_instagram_card.html',
+      templateUrl: 'js/templates/instagram_card.html',
       scope: {
         ngModel: '='
       },

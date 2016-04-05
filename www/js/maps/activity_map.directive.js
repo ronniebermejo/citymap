@@ -10,7 +10,7 @@
   function ActivityMap() {
     var directive = {
       restrict: 'A',
-      templateUrl: '/js/templates/activity_map.html',
+      templateUrl: 'js/templates/activity_map.html',
       scope: {
         currentLocation: '=',
         options: '=',
@@ -25,8 +25,8 @@
 
   ActivityMapController.$inject = ['$interval', 'googleDirections',
     'uiGmapIsReady', 'MapsConfig'];
-  function ActivityMapController($interval, googleDirections,
-                                 uiGmapIsReady, MapsConfig) {
+  function ActivityMapController($interval,
+                                  MapsConfig) {
     // https://developers.google.com/maps/documentation/javascript/directions
     var vm = this;
     var INITIAL_ZOOM = 6;
@@ -46,9 +46,6 @@
     activate();
 
     function activate() {
-      uiGmapIsReady.promise().then(function() {
-        getPlaces();
-      });
     }
 
     function getPlaces() {
@@ -61,7 +58,7 @@
       };
 
 
-      var service = new google.maps.places.PlacesService(vm.control.getGMap());
+
       service.nearbySearch(request, function (results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
