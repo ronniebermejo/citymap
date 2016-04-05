@@ -3,13 +3,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
   <!--Change when in production-->
-  <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; media-src *; img-src *; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * &apos;unsafe-inline&apos;; media-src *; img-src *; script-src * &apos;unsafe-inline&apos; &apos;unsafe-eval&apos;">
   <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com *.ionic.io *.openstreetmap.org; style-src 'self' 'unsafe-inline'; media-src *; img-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval'">-->
   <title>citymap</title>
 
   <link href="http://code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
   <link href="css/ionic.app.css" rel="stylesheet">
   <script src="http://code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+  <script src="lib/firebase"></script>
+  <script src="lib/angularfire/dist/angularfire.min.js"></script>
+  <link href="lib/leaflet/dist/leaflet.css" rel="stylesheet">
+  <script src="lib/leaflet/dist/leaflet.js"></script>
   <script src="lib/exif-js/exif.js"></script>
   <link href="lib/leaflet/dist/leaflet.css" rel="stylesheet">
   <script src="lib/leaflet/dist/leaflet.js"></script>

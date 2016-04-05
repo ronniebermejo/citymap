@@ -6,6 +6,8 @@
     "exif-js": "^2.1",
     "jshint": "^2.9",
     "angular-leaflet-directive": "0.10.0",
+    "firebase": "2.4.2",
+    "angularfire": "1.2.0",
     "js-rich-marker": "*"
   }
 }
