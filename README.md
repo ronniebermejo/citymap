@@ -1,27 +1,25 @@
 # citymap
 
+## City feed and activity map
+
+![image](https://cloud.githubusercontent.com/assets/3291755/14301939/5ebd336c-fb61-11e5-9079-2a0a83abd109.png)
+
+![image](https://cloud.githubusercontent.com/assets/3291755/14301979/af6faa2e-fb61-11e5-83ce-651910fe968e.png)
+
+## Project Setup.
+
 1. Install ionic: http://ionicframework.com/
-2. ionic platform add android
-3. cordova plugin add cordova-plugin-whitelist
-4. npm install
-5. ionic serve -> To see if everything is working as it should
-6. ionic run android -l -c -s
+2. `ionic platform add android`
+3. `ionic platform add ios`
+3. `cordova plugin add cordova-plugin-whitelist`
+4. `npm install`
+5. Required for glup/sass, `npm install -g gulp`
+6. `sudo npm install -g jshint`
 
 
-Required for glup/sass
-`npm install -g gulp`
+## Run
+Browser:  `ionic serve` 
+IOS Simulator: `ionic run android -l -c -s`
+Andoroid Simulator: `ionic run ios`
 
-### Process
 
-## Static Checks
-
-### Javascript
-
-jshint, check configuration `.jshintrc`
-We may want to create a gulp/grunt task for it.
-
-Install: 
-   -  `sudo npm install -g jshint`
-   
-Run: 
-    `jshint www/js`
