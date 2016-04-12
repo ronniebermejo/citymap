@@ -9755,14 +9755,14 @@ body {
   border-radius: 5px; }
 
 .image-card {
-  border: 1px solid silver;
+  border: 1px solid #efefef;
   border-radius: 10px;
   padding-top: 0px; }
   .image-card .main-image {
     width: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    border-bottom: 1px solid silver; }
+    border-bottom: 2px solid #efefef; }
   .image-card p {
     font-size: 12px;
     color: #464646;
@@ -9772,10 +9772,30 @@ body {
   .image-card .mini-profile-image {
     border-radius: 40px;
     vertical-align: middle;
-    border: 2px solid #0a9dc7;
+    border: 2px solid #efefef;
     width: 40px;
     display: block;
     margin: 0 auto; }
   .image-card .profile-label {
     font-size: 14px;
     font-weight: 600; }
+
+.image-header {
+  text-align: right; }
+  .image-header .header-title {
+    position: absolute;
+    top: 10px;
+    right: 10px; }
+  .image-header h4, .image-header h5 {
+    font-family: Oswald;
+    font-weight: 600;
+    color: #e5e5e5; }
+  .image-header h4 {
+    font-weight: 600;
+    font-size: 34px;
+    text-shadow: #464646 1px 1px; }
+  .image-header h5 {
+    font-weight: 600;
+    font-size: 21px;
+    text-shadow: #464646 1px 1px;
+    font-family: Oswald; }
