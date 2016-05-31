@@ -1,4 +1,4 @@
-<ion-view view-title="Queretaro Ahora">
+<ion-view view-title="Querétaro Ahora">
 
 
   <ion-content data-tap-disabled="true" ng-controller="mainController" overflow-scroll="true">
@@ -7,11 +7,12 @@
       <ion-spinner icon="spiral"></ion-spinner>
     </ion-refresher>
     <div class="image-header">
-      <img src="http://www.grupotravel.com/gestor_web/contenido/img/5463e9b5c8e79.jpg" width="100%">
-      <!--<img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Acueductos_Ciudad_de_Quer%C3%A9taro,_M%C3%A9xico.jpg" width="100%">-->
+      <!-- change photo nigth or day -->
+      <img ng-if="(vm.date | date: 'H') >= 5 && (vm.date | date: 'H') <= 20" src="http://www.grupotravel.com/gestor_web/contenido/img/5463e9b5c8e79.jpg" width="100%">
+      <img ng-if="(vm.date | date: 'H') > 20 && (vm.date | date: 'H') < 5" src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Acueductos_Ciudad_de_Quer%C3%A9taro,_M%C3%A9xico.jpg" width="100%">
       <div class="header-title">
         <h4>
-          Queretaro, Mx.
+          Querétaro, Mx.
         </h4>
         <h5>
         {{vm.weather.currently.temperature}} &#8451;
@@ -23,22 +24,28 @@
       </div>
     </div>
     <ion-list>
-      <!--<ion-item ng-repeat="trend in vm.trends" class="item-text-wrap" href="trend.link">-->
-        <!--<h4>Tendendcias de Internet</h4>-->
-        <!--<div ng-bind-html='trend.content'></div>-->
-      <!--</ion-item>-->
-      <!--<ion-item ng-repeat="new in vm.news" class="item-text-wrap">-->
-        <!--<h4>Noticias</h4>-->
-
-        <!--<p>{{new.title}}</p>-->
-        <!--<a href="{{new.link}}">Ver</a>-->
-      <!--</ion-item>-->
-      <ion-item ng-repeat="image in vm.images" class="item-text-wrap">
-        <div class="instagram-card" ng-model="image"></div>
+      <h4>Tendencias de Internet</h4>
+      <ion-item ng-repeat="trend in vm.trends" class="item-text-wrap">
+        <div target="_blank" ng-bind-html='trend.content'></div>
       </ion-item>
+      <h4>Noticias</h4>
+      <ion-item ng-repeat="new in vm.news" class="item-text-wrap">
+        <i ng-bind-html='new.title'></i>
+        <a target="_blank" href="{{new.link}}">Ver</a>
+      </ion-item>
+      <h4>Actividad de Lugares en Tiempo Real reportada por Usuarios</h4>
+      <ion-item ng-if="hit.hereNow.count >= 1" ng-repeat="hit in vm.foursquare" class="item-text-wrap">
+        <div>{{hit.name}}</div>
+        <div>{{hit.location.address}}</div>
+        <div>Usuarios reportando: {{hit.hereNow.count}}</div>
+      </ion-item>
+      <h4>Actividad de Redes Sociales en Tiempo Real reportada por Usuarios</h4>
+      <ion-item ng-repeat="image in vm.images" class="item-text-wrap">
+        <div class="instagram-card instImg" ng-model="image"></div>
+      </ion-item>
+
     </ion-list>
-    <ion-infinite-scroll immediate-check="false" on-infinite="loadMore()" distance="5%"
-                         ng-if="true"></ion-infinite-scroll>
+    <ion-infinite-scroll immediate-check="false" on-infinite="loadMore()" distance="5%" ng-if="true"></ion-infinite-scroll>
 
   </ion-content>
 

@@ -12,8 +12,8 @@
   <script src="http://code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
   <script src="lib/exif-js/exif.js"></script>
   <link href="lib/leaflet/dist/leaflet.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/styles.css" rel="stylesheet">
   <script src="lib/leaflet/dist/leaflet.js"></script>
-
 
   <script src="http://example.gajotres.net/include/loadsh/lodash.min.js"></script>
 
@@ -42,7 +42,7 @@
   </ion-nav-bar>
   <ion-tabs tabs-style="tabs-icon-bottom" tabs-type="tabs-positive">
 
-    <ion-tab title="Map" icon="ion-map" href="#/">
+    <ion-tab title="Map" icon="ion-map" href="#/home">
       <ion-nav-view name="home-tab"></ion-nav-view>
     </ion-tab>
 
@@ -58,17 +58,16 @@
 
   <ion-nav-view></ion-nav-view>
   <script id="home.html" type="text/ng-template">
-    <ion-view view-title="queretaro">
+    <ion-view view-title="Querétaro">
       <ion-content data-tap-disabled="true">
         <leaflet markers="vm.markers" id='map' lf-center="vm.initialLocation" tiles="vm.tiles" height="93%" width="100%"></leaflet>
-        <!--<ion-list>-->
-          <!--<ion-item ng-repeat="place in vm.places">-->
-            <!--<p><img ng-src="{{place.icon}}" style="border-radius: 40px;width:20px;">{{place.name}}-->
-          <!--</ion-item>-->
-        <!--</ion-list>-->
+        <ion-list>
+          <ion-item ng-repeat="place in vm.places">
+            <p><img ng-src="{{place.icon}}" style="border-radius: 40px;width:20px;">{{place.name}}
+          </ion-item>
+        </ion-list>
       </ion-content>
     </ion-view>
   </script>
 </body>
 </html>
-
