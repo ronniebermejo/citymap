@@ -70,7 +70,7 @@
       getWeather();
       getNews();
       getTrendTopics();
-      //getFourSquare();
+      getFourSquare();
     }
 
     function getInstagram() {
@@ -188,12 +188,16 @@
         'client_id=KX3DUHLUNAVDUMWNPAQHWNRWKFBYBJQIC5WVHXJZ0FFRZ0LF&' +
         'client_secret=FK0OROYAHGJ4VP1A1SNL30GONFWIPQDTP0FRENJWDIVL1GGS&v=20130815&' +
         'll=20.6,-100.383333&' +
-        'query=coffee?' +
+        'query=coffee&' +
         'callback=JSON_CALLBACK';
 
       $http.jsonp(url)
         .success(function (data) {
           console.log(data);
+          console.log(data.response.venues);
+          vm.foursquare = data.response.venues;
+        }, function (error) {
+          console.log("error in getFourSquareResults");
         });
     }
 
