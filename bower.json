@@ -6,6 +6,7 @@
     "exif-js": "^2.1",
     "jshint": "^2.9",
     "angular-leaflet-directive": "0.10.0",
-    "js-rich-marker": "*"
+    "js-rich-marker": "*",
+    "angular-i18n": "1.5.6"
   }
 }
